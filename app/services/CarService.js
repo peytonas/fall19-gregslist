@@ -19,6 +19,7 @@ export default class CarService {
 
   get Cars() {
     // NOTE car is the current car in the array we are making a new object that is a copy to break reference
+    //map is returning a new array of all the new copies of objects from the original
     return _state.cars.map(car => new Car(car))
 
     // NOTE accessing individual car with for loop

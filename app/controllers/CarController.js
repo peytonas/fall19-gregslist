@@ -7,12 +7,19 @@ let _carService = new CarService()
 // get cars from the service
 // the element to inject the cars template into
 function _draw() {
+  let template = ''
   let cars = _carService.Cars
-  cars[0].description = "i broked it"
 
-  cars = _carService.Cars
-  console.log(cars)
+  cars.forEach(car => {
+    template += car.Template
+  })
 
+  // NOTE same as above
+  // for (let i = 0; i < cars.length; i++) {
+  //   const car = cars[i];
+  // }
+
+  document.querySelector("#cars").innerHTML = template
 
 }
 
