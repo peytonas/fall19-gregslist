@@ -1,14 +1,7 @@
 import House from "../models/House.js";
 
 let _state = {
-  houses: [new House({
-    style: "Humble",
-    location: "Beach Side",
-    price: 50,
-    year: 1957,
-    imgUrl: "https://cdn-02.independent.ie/incoming/article29047074.ece/35dd9/AUTOCROP/w620/rundown-house-ts.jpg",
-    description: "A real bargain!"
-  })]
+  houses: []
 }
 
 export default class HouseService {
@@ -27,7 +20,7 @@ export default class HouseService {
   // }
 
   addHouse(newHouse) {
-    _state.House.push(new House(newHouse))
+    _state.houses.push(new House(newHouse))
     console.log(_state.Houses)
   }
 

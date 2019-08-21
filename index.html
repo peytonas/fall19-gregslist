@@ -41,13 +41,11 @@
           </div>
           <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" class="form-control" name="price" id="price" placeholder="Type in a price" required>
+            <input type="text" class="form-control" name="price" id="price" placeholder="Type in a price" required>
           </div>
           <button type="submit" class="btn btn-primary">Find Car</button>
         </form>
-        <div id="cars" class="row">
 
-        </div>
       </div>
       <div class="col-3">
         <h1 class="text-center">Get a Job!</h1>
@@ -78,9 +76,7 @@
           </div>
           <button type="submit" class="btn btn-primary">Search Jobs</button>
         </form>
-        <div id="jobs" class="row">
 
-        </div>
       </div>
       <div class="col-3">
         <h1 class="text-center">Find a House!</h1>
@@ -110,27 +106,26 @@
           </div>
           <div class="form-group">
             <label for="description">Description</label>
-            <input type="number" class="form-control" name="description" id="description"
+            <input type="text" class="form-control" name="description" id="description"
               placeholder="Type in a description" required>
           </div>
           <button type="submit" class="btn btn-primary">Find House</button>
         </form>
-        <div id="houses" class="row">
 
-        </div>
       </div>
     </div>
+  </div>
+  <div class="row justify-content-around">
+    <p id="cars" class="col-3">
+    </p>
+    <p id="jobs" class="col-3">
+    </p>
+    <p id="houses" class="col-3">
+    </p>
+  </div>
+  <div class="row" height="50px;">
 
   </div>
-  <div class="row">
-
-  </div>
-  <div class="row">
-
-  </div>
-  </div>
-  </div>
-
   <script src="app/main.js" type="module"></script>
 </body>
 

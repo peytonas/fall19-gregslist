@@ -2,8 +2,8 @@ import Car from "../models/Car.js";
 
 let _state = {
   cars: [new Car({
-    make: "Chevy",
-    model: "Tracker",
+    make: "Your Mom",
+    model: "NA",
     year: 1989,
     price: 0,
     imgUrl: "http://carphotos.cardomain.com/ride_images/2/4819/1781/24545890001_large.jpg",
