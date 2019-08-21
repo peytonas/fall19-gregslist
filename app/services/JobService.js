@@ -1,0 +1,54 @@
+import Job from "../models/Job.js";
+
+let _state = {
+  cars: [new Job({
+    company: "Chevy",
+    position: "Tracker",
+    pay: 1989,
+    imgUrl: "http://carphotos.cardomain.com/ride_images/2/4819/1781/24545890001_large.jpg",
+    description: "Itsa trackin"
+  })]
+}
+
+export default class JobService {
+  //NOTE delete job by id
+  deleteJob(id) {
+    _state.jobs.forEach((job, i) => {
+      if (job._id == id) {
+        _state.jobs.splice(i, 1)
+      }
+    })
+  }
+
+  //NOTE delete job by index
+  // deletejob(index) {
+  //   _state.jobs.splice(index, 1)
+  // }
+
+  addJob(newjob) {
+    _state.jobs.push(new Job(newjob))
+    console.log(_state.jobs)
+  }
+
+  constructor() {
+    console.log("hello from service")
+    console.log(_state.jobs)
+
+  }
+
+
+  get Jobs() {
+    // NOTE job is the current job in the array we are making a new object that is a copy to break reference
+    //map is returning a new array of all the new copies of objects from the original
+    return _state.jobs.map(job => new Job(job))
+
+    // NOTE accessing individual job with for loop
+    // for (let i = 0; i < _state.jobs.length; i++) {
+    //   let job = _state.jobs[i]
+    // }
+
+    // NOTE  using maps iterator to access an individual job
+    // return _state.jobs.map(function (job) { })
+
+  }
+}
