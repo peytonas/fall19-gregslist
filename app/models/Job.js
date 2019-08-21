@@ -13,10 +13,10 @@ export default class Job {
       <div class="col-4 border">
         <h1>${this.company}</h1>
         <h3>${this.position}</h3>
-        <img src="${this.imgUrl}" alt="">
+        <img src="${this.imgUrl}" alt="" height="228" width="340">
         <h3>${this.pay}</h3>
         <p>${this.description}</p>
-        <button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${this._id})">Delete Car</button>
+        <button class="btn btn-danger" onclick="app.controllers.carController.deleteJob(${this._id})">Delete Job</button>
       </div>
     `
   }

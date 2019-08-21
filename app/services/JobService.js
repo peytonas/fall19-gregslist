@@ -2,18 +2,18 @@ import Job from "../models/Job.js";
 
 let _state = {
   jobs: [new Job({
-    company: "Chevy",
-    position: "Tracker",
-    pay: 1989,
+    company: "Your Mom",
+    position: "Goes to College",
+    pay: 0,
     imgUrl: "https://i0.wp.com/chartcons.com/wp-content/uploads/wierd-interview-questions5.jpg?resize=1021%2C580&ssl=1",
-    description: "Itsa trackin"
+    description: "got eem"
   })]
 }
 
 export default class JobService {
   //NOTE delete job by id
   deleteJob(id) {
-    _state.jobs.forEach((job, i) => {
+    _state.job.forEach((job, i) => {
       if (job._id == id) {
         _state.jobs.splice(i, 1)
       }

@@ -14,11 +14,11 @@ export default class House {
       <div class="col-4 border">
         <h1>${this.style}</h1>
         <h3>${this.location}</h3>
-        <img src="${this.imgUrl}" alt="">
+        <img src="${this.imgUrl}" alt="" height="228" width="340">
         <h3>${this.price}</h3>
         <p>${this.year}</p>
         <p>${this.description}</p>
-        <button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${this._id})">Delete House</button>
+        <button class="btn btn-danger" onclick="app.controllers.carController.deleteHouse(${this._id})">Delete House</button>
       </div>
     `
   }

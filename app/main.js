@@ -12,5 +12,5 @@ class App {
     }
   }
 }
-lol
+
 window["app"] = new App()

@@ -14,7 +14,7 @@ export default class Car {
       <div class="col-4 border">
         <h1>${this.make}</h1>
         <h3>${this.model}</h3>
-        <img src="${this.imgUrl}" alt="">
+        <img src="${this.imgUrl}" alt="" height="228" width="340">
         <h3>${this.price}</h3>
         <p>${this.year}</p>
         <p>${this.description}</p>
