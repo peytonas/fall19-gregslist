@@ -17,7 +17,7 @@ export default class Car {
         <h3>${this.price}</h3>
         <p>${this.year}</p>
         <p>${this.description}</p>
-        <img src="${this.imgUrl}" alt="" height="100px" width="100px">
+        <img src="${this.imgUrl}" alt="" height="130px" width="130px">
         <button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${this._id})">Delete Car</button>
       </div>
     `

@@ -1,14 +1,7 @@
 import Car from "../models/Car.js";
 
 let _state = {
-  cars: [new Car({
-    make: "Your Mom",
-    model: "NA",
-    year: 1989,
-    price: 0,
-    imgUrl: "http://carphotos.cardomain.com/ride_images/2/4819/1781/24545890001_large.jpg",
-    description: "Itsa trackin"
-  })]
+  cars: []
 }
 
 export default class CarService {

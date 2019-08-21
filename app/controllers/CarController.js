@@ -52,10 +52,10 @@ export default class carController {
     let newCar = {
       make: form.make.value,
       model: form.model.value,
-      imgUrl: form.imgUrl.value,
+      price: form.price.value,
       year: form.year.value,
+      imgUrl: form.imgUrl.value,
       description: form.description.value,
-      price: form.price.value
     }
 
     _carService.addCar(newCar)

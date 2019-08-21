@@ -54,8 +54,8 @@ export default class houseController {
       location: form.location.value,
       price: form.price.value,
       year: form.year.value,
-      imgUrl: form.imgUrl.value,
       description: form.description.value,
+      imgUrl: form.imgUrl.value,
     }
 
     _houseService.addHouse(newHouse)

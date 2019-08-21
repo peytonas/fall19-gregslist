@@ -1,13 +1,7 @@
 import Job from "../models/Job.js";
 
 let _state = {
-  jobs: [new Job({
-    company: "Your Mom",
-    position: "NA",
-    pay: 0,
-    imgUrl: "https://i0.wp.com/chartcons.com/wp-content/uploads/wierd-interview-questions5.jpg?resize=1021%2C580&ssl=1",
-    description: "got eem"
-  })]
+  jobs: []
 }
 
 export default class JobService {

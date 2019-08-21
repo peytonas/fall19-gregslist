@@ -53,8 +53,8 @@ export default class jobController {
       company: form.company.value,
       position: form.position.value,
       pay: form.pay.value,
-      imgUrl: form.imgUrl.value,
       description: form.description.value,
+      imgUrl: form.imgUrl.value,
     }
 
     _jobService.addJob(newJob)

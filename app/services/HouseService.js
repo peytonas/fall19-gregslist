@@ -21,12 +21,12 @@ export default class HouseService {
 
   addHouse(newHouse) {
     _state.houses.push(new House(newHouse))
-    console.log(_state.Houses)
+    console.log(_state.houses)
   }
 
   constructor() {
     console.log("hello from service")
-    console.log(_state.cars)
+    console.log(_state.houses)
 
   }
 
