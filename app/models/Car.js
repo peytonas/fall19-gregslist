@@ -1,5 +1,3 @@
-
-//lol
 export default class Car {
   constructor(data) {
     this._id = data._id || Math.floor(Math.random() * 400000)
