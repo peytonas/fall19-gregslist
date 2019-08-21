@@ -2,6 +2,7 @@
 
 export default class Car {
   constructor(data) {
+    this._id = data._id || Math.floor(Math.random() * 400000)
     this.make = data.make
     this.model = data.model
     this.price = data.price
@@ -19,6 +20,7 @@ export default class Car {
         <h3>${this.price}</h3>
         <p>${this.year}</p>
         <p>${this.description}</p>
+        <button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${this._id})">Delete Car</button>
       </div>
     `
   }

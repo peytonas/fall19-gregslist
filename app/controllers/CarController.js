@@ -10,8 +10,10 @@ function _draw() {
   let template = ''
   let cars = _carService.Cars
 
-  cars.forEach(car => {
+  cars.forEach((car, index) => {
     template += car.Template
+    //NOTE delete using index adding button to template
+    // template += `<button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${index})">Delete Car</button></div>`
   })
 
   // NOTE same as above
@@ -30,6 +32,18 @@ export default class CarController {
     _draw()
   }
 
+  //NOTE delete car by index
+  // deleteCar(index) {
+  //   _carService.deleteCar(index)
+  //   _draw()
+  // }
+
+
+  //NOTE delete car by id
+  deleteCar(id) {
+    _carService.deleteCar(id)
+    _draw()
+  }
 
   addCar(event) {
     event.preventDefault()

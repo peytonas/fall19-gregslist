@@ -12,6 +12,19 @@ let _state = {
 }
 
 export default class CarService {
+  //NOTE delete car by id
+  deleteCar(id) {
+    _state.cars.forEach((car, i) => {
+      if (car._id == id) {
+        _state.cars.splice(i, 1)
+      }
+    })
+  }
+
+  //NOTE delete car by index
+  // deleteCar(index) {
+  //   _state.cars.splice(index, 1)
+  // }
 
   addCar(newCar) {
     _state.cars.push(new Car(newCar))
@@ -20,6 +33,8 @@ export default class CarService {
 
   constructor() {
     console.log("hello from service")
+    console.log(_state.cars)
+
   }
 
 
