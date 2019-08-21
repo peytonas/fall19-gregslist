@@ -13,7 +13,7 @@ let _state = {
 export default class JobService {
   //NOTE delete job by id
   deleteJob(id) {
-    _state.job.forEach((job, i) => {
+    _state.jobs.forEach((job, i) => {
       if (job._id == id) {
         _state.jobs.splice(i, 1)
       }

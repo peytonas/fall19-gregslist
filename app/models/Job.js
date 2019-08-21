@@ -4,19 +4,19 @@ export default class Job {
     this.company = data.company
     this.position = data.position
     this.pay = data.pay
-    this.imgUrl = data.imgUrl
     this.description = data.description || "No description provided"
+    this.imgUrl = data.imgUrl
   }
 
   get Template() {
     return `
-      <div class="col-4 border">
+      <div class="col-3">
         <h1>${this.company}</h1>
         <h3>${this.position}</h3>
-        <img src="${this.imgUrl}" alt="" height="228" width="340">
         <h3>${this.pay}</h3>
         <p>${this.description}</p>
-        <button class="btn btn-danger" onclick="app.controllers.carController.deleteJob(${this._id})">Delete Job</button>
+        <img src="${this.imgUrl}" alt="" height="100px" width="100px">
+        <button class="btn btn-danger" onclick="app.controllers.jobController.deleteJob(${this._id})">Delete Job</button>
       </div>
     `
   }

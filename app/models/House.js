@@ -5,20 +5,20 @@ export default class House {
     this.location = data.location
     this.price = data.price
     this.year = data.year
-    this.imgUrl = data.imgUrl
     this.description = data.description || "No description provided"
+    this.imgUrl = data.imgUrl
   }
 
   get Template() {
     return `
-      <div class="col-4 border">
+      <div class="col-3">
         <h1>${this.style}</h1>
         <h3>${this.location}</h3>
-        <img src="${this.imgUrl}" alt="" height="228" width="340">
         <h3>${this.price}</h3>
         <p>${this.year}</p>
         <p>${this.description}</p>
-        <button class="btn btn-danger" onclick="app.controllers.carController.deleteHouse(${this._id})">Delete House</button>
+        <img src="${this.imgUrl}" alt="" height="100px" width="100px">
+        <button class="btn btn-danger" onclick="app.controllers.houseController.deleteHouse(${this._id})">Delete House</button>
       </div>
     `
   }

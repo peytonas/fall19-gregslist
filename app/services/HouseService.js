@@ -14,7 +14,7 @@ let _state = {
 export default class HouseService {
   //NOTE delete car by id
   deleteHouse(id) {
-    _state.house.forEach((house, i) => {
+    _state.houses.forEach((house, i) => {
       if (house._id == id) {
         _state.houses.splice(i, 1)
       }
