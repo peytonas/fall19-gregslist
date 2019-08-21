@@ -12,6 +12,12 @@ let _state = {
 }
 
 export default class CarService {
+
+  addCar(newCar) {
+    _state.cars.push(new Car(newCar))
+    console.log(_state.cars)
+  }
+
   constructor() {
     console.log("hello from service")
   }

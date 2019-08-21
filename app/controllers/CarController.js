@@ -29,4 +29,24 @@ export default class CarController {
     console.log("hello from car controller")
     _draw()
   }
+
+
+  addCar(event) {
+    event.preventDefault()
+    let form = event.target
+
+    let newCar = {
+      make: form.make.value,
+      model: form.model.value,
+      imgUrl: form.imgUrl.value,
+      year: form.year.value,
+      description: form.description.value,
+      price: form.price.value
+    }
+
+    _carService.addCar(newCar)
+    _draw()
+
+  }
+
 }
