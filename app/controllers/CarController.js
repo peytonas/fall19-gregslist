@@ -26,7 +26,7 @@ function _draw() {
 }
 
 
-export default class CarController {
+export default class carController {
   constructor() {
     console.log("hello from car controller")
     _draw()

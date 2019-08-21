@@ -1,11 +1,11 @@
 import Job from "../models/Job.js";
 
 let _state = {
-  cars: [new Job({
+  jobs: [new Job({
     company: "Chevy",
     position: "Tracker",
     pay: 1989,
-    imgUrl: "http://carphotos.cardomain.com/ride_images/2/4819/1781/24545890001_large.jpg",
+    imgUrl: "https://i0.wp.com/chartcons.com/wp-content/uploads/wierd-interview-questions5.jpg?resize=1021%2C580&ssl=1",
     description: "Itsa trackin"
   })]
 }

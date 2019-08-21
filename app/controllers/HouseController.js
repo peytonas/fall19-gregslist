@@ -26,7 +26,7 @@ function _draw() {
 }
 
 
-export default class HouseController {
+export default class houseController {
   constructor() {
     console.log("hello from house controller")
     _draw()

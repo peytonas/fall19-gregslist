@@ -26,7 +26,7 @@ function _draw() {
 }
 
 
-export default class JobController {
+export default class jobController {
   constructor() {
     console.log("hello from job controller")
     _draw()
@@ -50,10 +50,9 @@ export default class JobController {
     let form = event.target
 
     let newJob = {
-      style: form.style.value,
-      location: form.location.value,
-      price: form.price.value,
-      year: form.year.value,
+      company: form.company.value,
+      position: form.position.value,
+      pay: form.pay.value,
       imgUrl: form.imgUrl.value,
       description: form.description.value,
     }
