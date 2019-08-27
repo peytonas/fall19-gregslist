@@ -7,10 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Gregs List</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-
+<body class="background text-white">
   <div class="container-fluid">
     <div class="row justify-content-around">
       <div class="col-3">
@@ -18,11 +18,11 @@
         <form onsubmit="app.controllers.carController.addCar(event)">
           <div class="form-group">
             <label for="make">Make</label>
-            <input type="text" class="form-control" name="make" id="make" placeholder="Type in a make" required>
+            <input type="text" class="form-control" name="make" id="make" placeholder="car make" required>
           </div>
           <div class="form-group">
             <label for="model">Model</label>
-            <input type="text" class="form-control" name="model" id="model" placeholder="Type in a model" required>
+            <input type="text" class="form-control" name="model" id="model" placeholder="car model" required>
           </div>
           <div class="form-group">
             <label for="year">Year</label>
@@ -31,67 +31,65 @@
           </div>
           <div class="form-group">
             <label for="imgUrl">Image</label>
-            <input type="text" class="form-control" name="imgUrl" id="imgUrl" placeholder="Type in an image address"
+            <input type="text" class="form-control" name="imgUrl" id="imgUrl" placeholder="type in an image address"
               required>
           </div>
           <div class="form-group">
             <label for="description">Description</label>
             <input type="text" class="form-control" name="description" id="description"
-              placeholder="Type in a description" required>
+              placeholder="type in a description" required>
           </div>
           <div class="form-group">
             <label for="price">Price</label>
-            <input type="text" class="form-control" name="price" id="price" placeholder="Type in a price" required>
+            <input type="text" class="form-control" name="price" id="price" placeholder="type in a price" required>
           </div>
           <button type="submit" class="btn btn-primary">Find Car</button>
         </form>
-
       </div>
       <div class="col-3">
         <h1 class="text-center">Get a Job!</h1>
         <form onsubmit="app.controllers.jobController.addJob(event)">
           <div class="form-group">
             <label for="company">Company</label>
-            <input type="text" class="form-control" name="company" id="company" placeholder="Type in a company"
+            <input type="text" class="form-control" name="company" id="company" placeholder="type in a company"
               required>
           </div>
           <div class="form-group">
             <label for="position">Position</label>
-            <input type="text" class="form-control" name="position" id="position" placeholder="Type in a position"
+            <input type="text" class="form-control" name="position" id="position" placeholder="type in a position"
               required>
           </div>
           <div class="form-group">
             <label for="pay">Pay</label>
-            <input type="text" class="form-control" name="pay" id="pay" placeholder="Type in pay range" required>
+            <input type="text" class="form-control" name="pay" id="pay" placeholder="type in pay range" required>
           </div>
           <div class="form-group">
             <label for="imgUrl">Image</label>
-            <input type="text" class="form-control" name="imgUrl" id="imgUrl" placeholder="Type in an image address"
+            <input type="text" class="form-control" name="imgUrl" id="imgUrl" placeholder="type in an image address"
               required>
           </div>
           <div class="form-group">
             <label for="description">Description</label>
             <input type="text" class="form-control" name="description" id="description"
-              placeholder="Type in a description" required>
+              placeholder="type in a description" required>
           </div>
           <button type="submit" class="btn btn-primary">Search Jobs</button>
         </form>
-
       </div>
       <div class="col-3">
         <h1 class="text-center">Find a House!</h1>
         <form onsubmit="app.controllers.houseController.addHouse(event)">
           <div class="form-group">
             <label for="style">Style</label>
-            <input type="text" class="form-control" name="style" id="style" placeholder="Type in a style" required>
+            <input type="text" class="form-control" name="style" id="style" placeholder="type in a style" required>
           </div>
           <div class="form-group">
             <label for="year">Year</label>
-            <input type="text" class="form-control" name="year" id="year" placeholder="Type in a description" required>
+            <input type="text" class="form-control" name="year" id="year" placeholder="type in a description" required>
           </div>
           <div class="form-group">
             <label for="location">Location</label>
-            <input type="text" class="form-control" name="location" id="location" placeholder="Type in a location"
+            <input type="text" class="form-control" name="location" id="location" placeholder="type in a location"
               required>
           </div>
           <div class="form-group">
@@ -101,17 +99,16 @@
           </div>
           <div class="form-group">
             <label for="imgUrl">Image</label>
-            <input type="text" class="form-control" name="imgUrl" id="imgUrl" placeholder="Type in an image address"
+            <input type="text" class="form-control" name="imgUrl" id="imgUrl" placeholder="type in an image address"
               required>
           </div>
           <div class="form-group">
             <label for="description">Description</label>
             <input type="text" class="form-control" name="description" id="description"
-              placeholder="Type in a description" required>
+              placeholder="type in a description" required>
           </div>
           <button type="submit" class="btn btn-primary">Find House</button>
         </form>
-
       </div>
     </div>
   </div>
@@ -124,7 +121,6 @@
     </p>
   </div>
   <div class="row" height="50px;">
-
   </div>
   <script src="app/main.js" type="module"></script>
 </body>
