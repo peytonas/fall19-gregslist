@@ -11,28 +11,13 @@ function _draw() {
   let template = ''
   cars.forEach(c => template += c.Template)
   document.getElementById("cars-cards").innerHTML = template
-  //NOTE delete using index adding button to template
-  // template += `<button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${index})">Delete Car</button></div>`
 }
-
-// NOTE same as above
-// for (let i = 0; i < cars.length; i++) {
-//   const car = cars[i];
-// }
-
-
 
 export default class carController {
   constructor() {
     _cs.addSubscriber("cars", _draw)
     _cs.getApiCars();
   }
-
-  //NOTE delete car by index
-  // deleteCar(index) {
-  //   _carService.deleteCar(index)
-  //   _draw()
-  // }
 
   addCar(event) {
     event.preventDefault();
@@ -52,7 +37,6 @@ export default class carController {
 
   }
 
-  //NOTE delete car by id
   delete(id) {
     if (window.confirm("Are you sure?")) {
       _cs.deleteCar(id)

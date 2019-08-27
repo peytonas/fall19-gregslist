@@ -21,7 +21,6 @@ function _draw() {
   //   const car = cars[i];
   // }
 
-  document.querySelector("#jobs").innerHTML = template
 
 }
 

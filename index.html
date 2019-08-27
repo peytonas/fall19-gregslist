@@ -50,7 +50,7 @@
             <label for="price">Price</label>
             <input type="text" class="form-control" name="price" id="price" placeholder="type in a price">
           </div>
-          <button class="btn btn-info" type="submit">Create</button>
+          <button type="submit" class="btn btn-info">Create</button>
         </form>
       </div>
       <div class="col-9">
@@ -107,10 +107,6 @@
         <h1 class="text-center">Find a House!</h1>
         <form onsubmit="app.controllers.houseController.addHouse(event)">
           <div class="form-group">
-            <label for="style">Style</label>
-            <input type="text" class="form-control" name="style" id="style" placeholder="type in a style" required>
-          </div>
-          <div class="form-group">
             <label for="year">Year</label>
             <input type="text" class="form-control" name="year" id="year" placeholder="type in a description" required>
           </div>
@@ -120,8 +116,22 @@
               required>
           </div>
           <div class="form-group">
+            <label for="levels">Levels</label>
+            <input type="text" class="form-control" name="levels" id="levels" placeholder="number of levels" required>
+          </div>
+          <div class="form-group">
+            <label for="bathrooms">Bathrooms</label>
+            <input type="text" class="form-control" name="bathrooms" id="bathrooms" placeholder="number of bathrooms"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="bedrooms">Bedrooms</label>
+            <input type="text" class="form-control" name="bedrooms" id="bedrooms" placeholder="number of bedrooms"
+              required>
+          </div>
+          <div class="form-group">
             <label for="price">Price</label>
-            <input type="number" min="25" max="3000000" class="form-control" name="price" id="price"
+            <input type="number" min="5" max="3000000" class="form-control" name="price" id="price"
               placeholder="pick a price range" required>
           </div>
           <div class="form-group">
@@ -134,17 +144,15 @@
             <input type="text" class="form-control" name="description" id="description"
               placeholder="type in a description" required>
           </div>
-          <button type="submit" class="btn btn-info">Find House</button>
+          <button type="submit" class="btn btn-info">Create</button>
         </form>
       </div>
       <div class="col-9">
-        <p>
-          <h3><u>Available Houses</u></h3>
-          <hr>
-          <div class="row" id="houses-cards">
+        <h3><u>Available Houses</u></h3>
+        <hr>
+        <div class="row" id="houses-cards">
 
-          </div>
-        </p>
+        </div>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"

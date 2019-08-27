@@ -1,48 +1,72 @@
 import House from "../models/House.js";
 
+// @ts-ignore
+let _houseApi = axios.create({
+  baseURL: "http://bcw-sandbox.herokuapp.com/api/houses"
+})
+
 let _state = {
   houses: []
 }
 
+let _subscribers = {
+  houses: []
+}
+
+function _setState(propName, data) {
+  _state[propName] = data
+  _subscribers[propName].forEach(fn => fn());
+}
+
 export default class HouseService {
-  //NOTE delete car by id
-  deleteHouse(id) {
-    _state.houses.forEach((house, i) => {
-      if (house._id == id) {
-        _state.houses.splice(i, 1)
-      }
-    })
+  addSubscriber(propName, fn) {
+    _subscribers[propName].push(fn)
   }
-
-  //NOTE delete car by index
-  // deleteCar(index) {
-  //   _state.cars.splice(index, 1)
-  // }
-
-  addHouse(newHouse) {
-    _state.houses.push(new House(newHouse))
-    console.log(_state.houses)
-  }
-
-  constructor() {
-    console.log("hello from service")
-    console.log(_state.houses)
-
-  }
-
 
   get Houses() {
-    // NOTE car is the current car in the array we are making a new object that is a copy to break reference
-    //map is returning a new array of all the new copies of objects from the original
-    return _state.houses.map(house => new House(house))
+    return _state.houses.map(h => new House(h))
+  }
 
-    // NOTE accessing individual car with for loop
-    // for (let i = 0; i < _state.cars.length; i++) {
-    //   let car = _state.cars[i]
-    // }
+  getApiHouses() {
+    _houseApi.get()
+      .then(res => {
+        let housesData = res.data.data.map(h => new House(h))
+        _setState("houses", housesData)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
-    // NOTE  using maps iterator to access an individual car
-    // return _state.cars.map(function (car) { })
+  addHouse(data) {
+    _houseApi.post("", data)
+      .then(res => {
+        _state.houses.push(res.data.data)
+        _setState("houses", _state.houses)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
+  deleteHouse(id) {
+    _houseApi.delete(id)
+      .then(res => {
+        let index = _state.houses.findIndex(house => house._id == id)
+        _state.houses.splice(index, 1)
+        _setState("houses", _state.houses)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
+  bid(id) {
+    let house = _state.houses.find(h => h._id == id)
+    house.price++
+    _houseApi.put(id, { price: house.price })
+      .then(res => {
+        _setState("houses", _state.houses)
+      })
   }
 }
