@@ -1,35 +1,31 @@
 import CarService from "../services/CarService.js";
 
 
-let _carService = new CarService()
+let _cs = new CarService()
 
 //  NOTE draw all the cars
 // get cars from the service
 // the element to inject the cars template into
 function _draw() {
+  let cars = _cs.Cars
   let template = ''
-  let cars = _carService.Cars
-
-  cars.forEach((car, index) => {
-    template += car.Template
-    //NOTE delete using index adding button to template
-    // template += `<button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${index})">Delete Car</button></div>`
-  })
-
-  // NOTE same as above
-  // for (let i = 0; i < cars.length; i++) {
-  //   const car = cars[i];
-  // }
-
-  document.querySelector("#cars").innerHTML = template
-
+  cars.forEach(c => template += c.Template)
+  document.getElementById("cars-cards").innerHTML = template
+  //NOTE delete using index adding button to template
+  // template += `<button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${index})">Delete Car</button></div>`
 }
+
+// NOTE same as above
+// for (let i = 0; i < cars.length; i++) {
+//   const car = cars[i];
+// }
+
 
 
 export default class carController {
   constructor() {
-    console.log("hello from car controller")
-    _draw()
+    _cs.addSubscriber("cars", _draw)
+    _cs.getApiCars();
   }
 
   //NOTE delete car by index
@@ -38,18 +34,11 @@ export default class carController {
   //   _draw()
   // }
 
-
-  //NOTE delete car by id
-  deleteCar(id) {
-    _carService.deleteCar(id)
-    _draw()
-  }
-
   addCar(event) {
-    event.preventDefault()
+    event.preventDefault();
     let form = event.target
 
-    let newCar = {
+    let data = {
       make: form.make.value,
       model: form.model.value,
       price: form.price.value,
@@ -58,9 +47,20 @@ export default class carController {
       description: form.description.value,
     }
 
-    _carService.addCar(newCar)
-    _draw()
+    _cs.addCar(data)
+    form.reset()
 
   }
+
+  //NOTE delete car by id
+  delete(id) {
+    if (window.confirm("Are you sure?")) {
+      _cs.deleteCar(id)
+    }
+  }
+  bid(id) {
+    _cs.bid(id)
+  }
+
 
 }

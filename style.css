@@ -1,12 +1,3 @@
-.background {
-  background-image: url("https://wallpaperbro.com/img/210373.png");
-  height: 700px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-
 ::-webkit-scrollbar {
   display: none;
 }

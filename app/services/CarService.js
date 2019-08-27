@@ -1,48 +1,76 @@
 import Car from "../models/Car.js";
 
+// @ts-ignore
+let _carApi = axios.create({
+  baseURL: "http://bcw-sandbox.herokuapp.com/api/cars"
+})
+
 let _state = {
   cars: []
 }
 
+let _subscribers = {
+  cars: []
+}
+
+function _setState(propName, data) {
+  _state[propName] = data
+  _subscribers[propName].forEach(fn => fn());
+}
+
 export default class CarService {
-  //NOTE delete car by id
-  deleteCar(id) {
-    _state.cars.forEach((car, i) => {
-      if (car._id == id) {
-        _state.cars.splice(i, 1)
-      }
-    })
+
+  addSubscriber(propName, fn) {
+    _subscribers[propName].push(fn)
   }
-
-  //NOTE delete car by index
-  // deleteCar(index) {
-  //   _state.cars.splice(index, 1)
-  // }
-
-  addCar(newCar) {
-    _state.cars.push(new Car(newCar))
-    console.log(_state.cars)
-  }
-
-  constructor() {
-    console.log("hello from service")
-    console.log(_state.cars)
-
-  }
-
 
   get Cars() {
     // NOTE car is the current car in the array we are making a new object that is a copy to break reference
     //map is returning a new array of all the new copies of objects from the original
-    return _state.cars.map(car => new Car(car))
+    return _state.cars.map(c => new Car(c))
+  }
 
-    // NOTE accessing individual car with for loop
-    // for (let i = 0; i < _state.cars.length; i++) {
-    //   let car = _state.cars[i]
-    // }
+  getApiCars() {
+    _carApi.get()
+      .then(res => {
+        let carsData = res.data.data.map(c => new Car(c))
+        _setState("cars", carsData)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
-    // NOTE  using maps iterator to access an individual car
-    // return _state.cars.map(function (car) { })
+  addCar(data) {
+    _carApi.post("", data)
+      .then(res => {
+        _state.cars.push(res.data.data)
+        _setState("cars", _state.cars)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
+  //NOTE delete car by id
+  deleteCar(id) {
+    _carApi.delete(id)
+      .then(res => {
+        let index = _state.cars.findIndex(car => car._id == id)
+        _state.cars.splice(index, 1)
+        _setState("cars", _state.cars)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
+  bid(id) {
+    let car = _state.cars.find(c => c._id == id)
+    car.price++
+    _carApi.put(id, { price: car.price })
+      .then(res => {
+        _setState("cars", _state.cars)
+      })
   }
 }
