@@ -6,14 +6,12 @@ export default class Job {
     this.hours = data.hours
     this.rate = data.rate
     this.description = data.description
-    this.imgUrl = data.imgUrl
   }
 
   get Template() {
     return `
       <div class="col-3">
         <div class="card">
-          <img class="card-img-top" src="${this.imgUrl}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">${this.company} - ${this.jobTitle} - ${this.hours}</h5>
             <p class="card-text">${this.description}</p>

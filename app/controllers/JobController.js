@@ -25,8 +25,7 @@ export default class jobController {
       jobTitle: form.jobTitle.value,
       hours: form.hours.value,
       rate: form.rate.value,
-      description: form.description.value,
-      imgUrl: form.imgUrl.value
+      description: form.description.value
     }
     _js.addJob(data)
     form.reset()
