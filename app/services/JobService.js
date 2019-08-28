@@ -1,48 +1,72 @@
 import Job from "../models/Job.js";
 
+// @ts-ignore
+let _jobApi = axios.create({
+  baseURL: "http://bcw-sandbox.herokuapp.com/api/jobs"
+})
+
 let _state = {
   jobs: []
 }
 
+let _subscribers = {
+  jobs: []
+}
+
+function _setState(propName, data) {
+  _state[propName] = data
+  _subscribers[propName].forEach(fn => fn());
+}
+
 export default class JobService {
-  //NOTE delete job by id
-  deleteJob(id) {
-    _state.jobs.forEach((job, i) => {
-      if (job._id == id) {
-        _state.jobs.splice(i, 1)
-      }
-    })
+  addSubscriber(propName, fn) {
+    _subscribers[propName].push(fn)
   }
-
-  //NOTE delete job by index
-  // deletejob(index) {
-  //   _state.jobs.splice(index, 1)
-  // }
-
-  addJob(newjob) {
-    _state.jobs.push(new Job(newjob))
-    console.log(_state.jobs)
-  }
-
-  constructor() {
-    console.log("hello from service")
-    console.log(_state.jobs)
-
-  }
-
 
   get Jobs() {
-    // NOTE job is the current job in the array we are making a new object that is a copy to break reference
-    //map is returning a new array of all the new copies of objects from the original
-    return _state.jobs.map(job => new Job(job))
+    return _state.jobs.map(h => new Job(h))
+  }
 
-    // NOTE accessing individual job with for loop
-    // for (let i = 0; i < _state.jobs.length; i++) {
-    //   let job = _state.jobs[i]
-    // }
+  getApiJobs() {
+    _jobApi.get()
+      .then(res => {
+        let jobsData = res.data.data.map(h => new Job(h))
+        _setState("jobs", jobsData)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
-    // NOTE  using maps iterator to access an individual job
-    // return _state.jobs.map(function (job) { })
+  addJob(data) {
+    _jobApi.post("", data)
+      .then(res => {
+        _state.jobs.push(res.data.data)
+        _setState("jobs", _state.jobs)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
 
+  deleteJob(id) {
+    _jobApi.delete(id)
+      .then(res => {
+        let index = _state.jobs.findIndex(job => job._id == id)
+        _state.jobs.splice(index, 1)
+        _setState("jobs", _state.jobs)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
+  bid(id) {
+    let job = _state.jobs.find(j => j._id == id)
+    job.price++
+    _jobApi.put(id, { price: job.price })
+      .then(res => {
+        _setState("jobs", _state.jobs)
+      })
   }
 }

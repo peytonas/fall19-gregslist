@@ -1,64 +1,50 @@
 import JobService from "../services/JobService.js";
 
 
-let _jobService = new JobService()
+let _js = new JobService()
 
 //  NOTE draw all the cars
 // get cars from the service
 // the element to inject the cars template into
 function _draw() {
+  let jobs = _js.Jobs
   let template = ''
-  let jobs = _jobService.Jobs
-
-  jobs.forEach((job, index) => {
-    template += job.Template
-    //NOTE delete using index adding button to template
-    // template += `<button class="btn btn-danger" onclick="app.controllers.carController.deleteCar(${index})">Delete Car</button></div>`
-  })
-
-  // NOTE same as above
-  // for (let i = 0; i < cars.length; i++) {
-  //   const car = cars[i];
-  // }
-
-
+  jobs.forEach(j => template += j.Template)
+  document.getElementById("jobs-cards").innerHTML = template
 }
 
 
 export default class jobController {
   constructor() {
-    console.log("hello from job controller")
-    _draw()
-  }
-
-  //NOTE delete car by index
-  // deleteCar(index) {
-  //   _carService.deleteCar(index)
-  //   _draw()
-  // }
-
-
-  //NOTE delete car by id
-  deleteJob(id) {
-    _jobService.deleteJob(id)
-    _draw()
+    _js.addSubscriber("jobs", _draw)
+    _js.getApiJobs();
   }
 
   addJob(event) {
-    event.preventDefault()
+    event.preventDefault();
     let form = event.target
 
-    let newJob = {
+    let data = {
       company: form.company.value,
-      position: form.position.value,
-      pay: form.pay.value,
+      jobTitle: form.jobTitle.value,
+      hours: form.hours.value,
+      rate: form.rate.value,
       description: form.description.value,
-      imgUrl: form.imgUrl.value,
+      imgUrl: form.imgUrl.value
     }
-
-    _jobService.addJob(newJob)
-    _draw()
+    _js.addJob(data)
+    form.reset()
 
   }
+
+  delete(id) {
+    if (window.confirm("Are you sure?")) {
+      _js.deleteJob(id)
+    }
+  }
+  bid(id) {
+    _js.bid(id)
+  }
+
 
 }
