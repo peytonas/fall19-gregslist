@@ -3,9 +3,6 @@ import CarService from "../services/CarService.js";
 
 let _cs = new CarService()
 
-//  NOTE draw all the cars
-// get cars from the service
-// the element to inject the cars template into
 function _draw() {
   let cars = _cs.Cars
   let template = ''
@@ -31,10 +28,8 @@ export default class carController {
       imgUrl: form.imgUrl.value,
       description: form.description.value,
     }
-
     _cs.addCar(data)
     form.reset()
-
   }
 
   delete(id) {
@@ -45,6 +40,4 @@ export default class carController {
   bid(id) {
     _cs.bid(id)
   }
-
-
 }

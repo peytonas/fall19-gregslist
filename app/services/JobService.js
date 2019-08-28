@@ -24,13 +24,13 @@ export default class JobService {
   }
 
   get Jobs() {
-    return _state.jobs.map(h => new Job(h))
+    return _state.jobs.map(j => new Job(j))
   }
 
   getApiJobs() {
     _jobApi.get()
       .then(res => {
-        let jobsData = res.data.data.map(h => new Job(h))
+        let jobsData = res.data.data.map(j => new Job(j))
         _setState("jobs", jobsData)
       })
       .catch(err => {
@@ -63,8 +63,8 @@ export default class JobService {
 
   bid(id) {
     let job = _state.jobs.find(j => j._id == id)
-    job.price++
-    _jobApi.put(id, { price: job.price })
+    job.rate++
+    _jobApi.put(id, { price: job.rate })
       .then(res => {
         _setState("jobs", _state.jobs)
       })

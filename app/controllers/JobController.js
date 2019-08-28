@@ -3,16 +3,12 @@ import JobService from "../services/JobService.js";
 
 let _js = new JobService()
 
-//  NOTE draw all the cars
-// get cars from the service
-// the element to inject the cars template into
 function _draw() {
   let jobs = _js.Jobs
   let template = ''
   jobs.forEach(j => template += j.Template)
   document.getElementById("jobs-cards").innerHTML = template
 }
-
 
 export default class jobController {
   constructor() {
@@ -34,7 +30,6 @@ export default class jobController {
     }
     _js.addJob(data)
     form.reset()
-
   }
 
   delete(id) {
@@ -45,6 +40,4 @@ export default class jobController {
   bid(id) {
     _js.bid(id)
   }
-
-
 }

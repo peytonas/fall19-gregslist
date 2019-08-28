@@ -49,7 +49,6 @@ export default class CarService {
       })
   }
 
-  //NOTE delete car by id
   deleteCar(id) {
     _carApi.delete(id)
       .then(res => {
